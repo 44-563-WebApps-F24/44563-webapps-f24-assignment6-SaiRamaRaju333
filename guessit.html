@@ -8,33 +8,61 @@
 <h2>Guess the color Puram Sai Rama Raju</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="secretColor">Guess the color: </label>
+    <input type="password" id="secretColor" value="Red"><br><br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="colorGuess">Enter a guess: </label>
+    <input type="text" id="colorGuess"><br><br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="processColor()" value="Check the color">
 </form>
 
 
-<p id="result">This text will be replaced </p>
+<p id="result">
+</p>
 
-<script> 
+<div>
+    <h2>Awesome Desserts</h2>
+    <img id="dessertsImages" src="pumpkinpie.jpeg" width="200" height="200" onclick="nextImage()">
+</div>
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+<script>
+
+    let attempts = 0;
+    let wrong = 0;
+
+    function processColor() {
+        const secretColor = document.getElementById('secretColor').value.toLowerCase();
+        const colorGuess = document.getElementById('colorGuess').value.toLowerCase();
+
+        attempts++;
+        if (secretColor !== colorGuess) {
+            wrong++;
+            alert("That was not it");
+        } else {
+            alert("You got it!");
+        }
+        document.getElementById('result').innerHTML = `Attempts: ${attempts}, Wrong guesses: ${wrong}`;
     }
-}
+    let showing = 1;
+    function nextImage() {
+        const img = document.getElementById('dessertsImages');
+        switch (showing) {
+            case 1:
+                img.src = 'RaspberrySorbet.jpeg';
+                showing = 2;
+                break;
+            case 2:
+                img.src = 'Sundae.jpeg';
+                showing = 3;
+                break;
+            case 3:
+                img.src = 'pumpkinpie.jpeg';
+                showing = 1;
+                break;
+        }
+    }
+
 </script>
 
 </body>
