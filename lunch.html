@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lunch Assignment06</title>
+     </head>
+ <body>
+
+<h2>Sai Rama Raju Puram orders a lunch</h2>
+
+<form>
+    <label for="drink">Drink</label>
+    <input type="checkbox" id="drink" value="drink"><br>
+
+    <label for="side">Side</label>
+    <input type="checkbox" id="side" value="side"><br>
+
+    <label for="in">Eat in</label>
+    <input type="checkbox" id="in" value="in"><br><br>
+
+    <button type="button" onclick="startLunch()">Start a Lunch Order</button>
+</form>
+<br>
+<div id="lunchResults"></div>
+
+<script> 
+let my_lunch = {};
+
+function startLunch() {
+    my_lunch = {};
+    my_lunch.drink = document.getElementById("drink").checked;
+    my_lunch.side = document.getElementById("side").checked;
+    my_lunch.in = document.getElementById("in").checked;
+
+    document.getElementById("lunchResults").innerHTML = JSON.stringify(my_lunch,null,2);
+}
+</script>
+
+</body>
+</html> 
