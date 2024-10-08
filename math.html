@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Math Assignment06</title>
+     </head>
+ 
+<body>
+
+<h2>Sai Rama Raju Puram figures out</h2>
+
+<form>
+    <label for="firstvalue">Enter a number:</label>
+    <input type ="number" id="firstvalue" value=2> <br>
+
+    <label for="secondvalue">Enter a number:</label>
+    <input type ="number" id="secondvalue" value="12"> <br>
+
+    <button type="button" onclick="powerSum()">Compute</button>
+    </form>
+    <div id="results"></div>
+
+    <form>
+        <label>
+            <input type="radio" name="calculation" value="max" onclick="processRadio()"> Max
+        </label><br>
+        <label>
+            <input type="radio" name="calculation" value="min" onclick="processRadio()"> Min
+        </label><br>
+        <label>
+            <input type="radio" name="calculation" value="avg" onclick="processRadio()"> Average
+        </label><br>
+        <label>
+            <input type="radio" name="calculation" value="geo" onclick="processRadio()"> Geometric
+        </label><br>
+    </form>
+    <div id="result"></div>
+
+
+
+<script> 
+
+function powerSum (){
+    let first = parseInt(document.getElementById('firstvalue').value);
+                let second = parseInt(document.getElementById('secondvalue').value);
+                let sum = 0;
+                for (let i = 0; i < first; i++) {
+                    sum += second ** i;
+                }
+                document.getElementById('result').innerHTML = `Sum of ${first} powers with base ${second} is ${sum}`;
+            }
+function processRadio() {
+        let first = parseFloat(document.getElementById('firstvalue').value);
+        let second = parseFloat(document.getElementById('secondvalue').value);
+        let selectedRadio = document.querySelector('input[name="calculation"]:checked').value;
+        let result;
+        let operation;
+                switch (selectedRadio) {
+                    case 'max':
+                        result = Math.max(first, second);
+                        operation = "Max";
+                        break;
+                    case 'min':
+                        result = Math.min(first, second);
+                        operation = "Min";
+                        break;
+                    case 'avg':
+                        result = (first + second) / 2;
+                        operation = "Average";
+                        break;
+                    case 'geo':
+                        result = (first * second) ** 0.5; 
+                        operation = "Geometric";
+                        break;
+                    default:
+                        result = "Invalid selection";
+                        operation = "None";
+                }
+                document.getElementById('result').innerHTML = `Computed ${operation} with values ${first} and ${second} with result ${result}.`;
+            }         
+</script>
+
+</body>
+</html> 
