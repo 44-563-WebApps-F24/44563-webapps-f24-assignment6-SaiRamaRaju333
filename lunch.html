@@ -20,6 +20,15 @@
     <button type="button" onclick="startLunch()">Start a Lunch Order</button>
 </form>
 <br>
+<form>
+    <label for="property">Enter property:</label>
+    <input type="text" id="property" value="entree"><br>
+
+    <label for="value">Set it to:</label>
+    <input type="text" id="value"><br><br>
+
+    <button type="button" onclick="updateLunch()">Update the Lunch</button>
+</form>
 <div id="lunchResults"></div>
 
 <script> 
@@ -33,6 +42,13 @@ function startLunch() {
 
     document.getElementById("lunchResults").innerHTML = JSON.stringify(my_lunch,null,2);
 }
+function updateLunch() {
+        let property = document.getElementById("property").value;
+        let value = document.getElementById("value").value;
+        my_lunch[property] = value;
+        document.getElementById("lunchResults").innerHTML = JSON.stringify(my_lunch,null,2);
+    }
+
 </script>
 
 </body>
